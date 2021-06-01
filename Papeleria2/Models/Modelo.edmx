@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PapeleriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="imagen" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="contrasenia" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dir_entregas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="estado" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="departamento" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="contrasenia" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orden_productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+          <Property Name="id_orden" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="num_guia" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_entrega" Type="date" />
+          <Property Name="fecha_envio" Type="date" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="id_dir_entrega" Type="int" Nullable="false" />
+          <Property Name="id_paqueteria" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Paqueterias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="rfc" Type="nvarchar" MaxLength="13" />
+          <Property Name="tel" Type="nvarchar" MaxLength="10" />
+          <Property Name="web" Type="nvarchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="60" />
+          <Property Name="contacto" Type="nvarchar" MaxLength="40" />
+          <Property Name="telContacto" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ult_actualizacion" Type="date" />
+          <Property Name="imagen" Type="nvarchar" MaxLength="50" />
+          <Property Name="existencia" Type="int" />
+          <Property Name="stock" Type="int" />
+          <Property Name="id_categoria" Type="int" />
+        </EntityType>
+        <Association Name="FK__Orden_pro__id_or__35BCFE0A">
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="1" />
+          <End Role="Orden_productos" Type="Self.Orden_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orden_productos">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orden_pro__id_pr__34C8D9D1">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Orden_productos" Type="Self.Orden_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orden_productos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_clie__30F848ED">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_dir___300424B4">
+          <End Role="Dir_entregas" Type="Self.Dir_entregas" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dir_entregas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_dir_entrega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_paqu__31EC6D26">
+          <End Role="Paqueterias" Type="Self.Paqueterias" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paqueterias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_paqueteria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__id_ca__2D27B809">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PapeleriaModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dir_entregas" EntityType="Self.Dir_entregas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orden_productos" EntityType="Self.Orden_productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordenes" EntityType="Self.Ordenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paqueterias" EntityType="Self.Paqueterias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orden_pro__id_or__35BCFE0A" Association="Self.FK__Orden_pro__id_or__35BCFE0A">
+            <End Role="Ordenes" EntitySet="Ordenes" />
+            <End Role="Orden_productos" EntitySet="Orden_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orden_pro__id_pr__34C8D9D1" Association="Self.FK__Orden_pro__id_pr__34C8D9D1">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Orden_productos" EntitySet="Orden_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_clie__30F848ED" Association="Self.FK__Ordenes__id_clie__30F848ED">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_dir___300424B4" Association="Self.FK__Ordenes__id_dir___300424B4">
+            <End Role="Dir_entregas" EntitySet="Dir_entregas" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_paqu__31EC6D26" Association="Self.FK__Ordenes__id_paqu__31EC6D26">
+            <End Role="Paqueterias" EntitySet="Paqueterias" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__id_ca__2D27B809" Association="Self.FK__Productos__id_ca__2D27B809">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PapeleriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__id_ca__2D27B809" FromRole="Categorias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__id_clie__30F848ED" FromRole="Clientes" ToRole="Ordenes" />
+        </EntityType>
+        <EntityType Name="Dir_entregas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="colonia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__id_dir___300424B4" FromRole="Dir_entregas" ToRole="Ordenes" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orden_productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="id_orden" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Orden_pro__id_or__35BCFE0A" FromRole="Orden_productos" ToRole="Ordenes" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Orden_pro__id_pr__34C8D9D1" FromRole="Orden_productos" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Ordenes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="num_guia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_entrega" Type="DateTime" Precision="0" />
+          <Property Name="fecha_envio" Type="DateTime" Precision="0" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_dir_entrega" Type="Int32" Nullable="false" />
+          <Property Name="id_paqueteria" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Ordenes__id_clie__30F848ED" FromRole="Ordenes" ToRole="Clientes" />
+          <NavigationProperty Name="Dir_entregas" Relationship="Self.FK__Ordenes__id_dir___300424B4" FromRole="Ordenes" ToRole="Dir_entregas" />
+          <NavigationProperty Name="Orden_productos" Relationship="Self.FK__Orden_pro__id_or__35BCFE0A" FromRole="Ordenes" ToRole="Orden_productos" />
+          <NavigationProperty Name="Paqueterias" Relationship="Self.FK__Ordenes__id_paqu__31EC6D26" FromRole="Ordenes" ToRole="Paqueterias" />
+        </EntityType>
+        <EntityType Name="Paqueterias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rfc" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="web" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="contacto" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="telContacto" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__id_paqu__31EC6D26" FromRole="Paqueterias" ToRole="Ordenes" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ult_actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="existencia" Type="Int32" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="id_categoria" Type="Int32" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK__Productos__id_ca__2D27B809" FromRole="Productos" ToRole="Categorias" />
+          <NavigationProperty Name="Orden_productos" Relationship="Self.FK__Orden_pro__id_pr__34C8D9D1" FromRole="Productos" ToRole="Orden_productos" />
+        </EntityType>
+        <Association Name="FK__Productos__id_ca__2D27B809">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_clie__30F848ED">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_dir___300424B4">
+          <End Role="Dir_entregas" Type="Self.Dir_entregas" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dir_entregas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_dir_entrega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orden_pro__id_or__35BCFE0A">
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="1" />
+          <End Role="Orden_productos" Type="Self.Orden_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordenes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orden_productos">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orden_pro__id_pr__34C8D9D1">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Orden_productos" Type="Self.Orden_productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orden_productos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ordenes__id_paqu__31EC6D26">
+          <End Role="Paqueterias" Type="Self.Paqueterias" Multiplicity="1" />
+          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paqueterias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_paqueteria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PapeleriaContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Dir_entregas" EntityType="Self.Dir_entregas" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Orden_productos" EntityType="Self.Orden_productos" />
+          <EntitySet Name="Ordenes" EntityType="Self.Ordenes" />
+          <EntitySet Name="Paqueterias" EntityType="Self.Paqueterias" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <AssociationSet Name="FK__Productos__id_ca__2D27B809" Association="Self.FK__Productos__id_ca__2D27B809">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_clie__30F848ED" Association="Self.FK__Ordenes__id_clie__30F848ED">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_dir___300424B4" Association="Self.FK__Ordenes__id_dir___300424B4">
+            <End Role="Dir_entregas" EntitySet="Dir_entregas" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orden_pro__id_or__35BCFE0A" Association="Self.FK__Orden_pro__id_or__35BCFE0A">
+            <End Role="Ordenes" EntitySet="Ordenes" />
+            <End Role="Orden_productos" EntitySet="Orden_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orden_pro__id_pr__34C8D9D1" Association="Self.FK__Orden_pro__id_pr__34C8D9D1">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Orden_productos" EntitySet="Orden_productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ordenes__id_paqu__31EC6D26" Association="Self.FK__Ordenes__id_paqu__31EC6D26">
+            <End Role="Paqueterias" EntitySet="Paqueterias" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PapeleriaModelStoreContainer" CdmEntityContainer="PapeleriaContext">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="PapeleriaModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="PapeleriaModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dir_entregas">
+            <EntityTypeMapping TypeName="PapeleriaModel.Dir_entregas">
+              <MappingFragment StoreEntitySet="Dir_entregas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="PapeleriaModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orden_productos">
+            <EntityTypeMapping TypeName="PapeleriaModel.Orden_productos">
+              <MappingFragment StoreEntitySet="Orden_productos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordenes">
+            <EntityTypeMapping TypeName="PapeleriaModel.Ordenes">
+              <MappingFragment StoreEntitySet="Ordenes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="num_guia" ColumnName="num_guia" />
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="fecha_envio" ColumnName="fecha_envio" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_dir_entrega" ColumnName="id_dir_entrega" />
+                <ScalarProperty Name="id_paqueteria" ColumnName="id_paqueteria" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paqueterias">
+            <EntityTypeMapping TypeName="PapeleriaModel.Paqueterias">
+              <MappingFragment StoreEntitySet="Paqueterias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="rfc" ColumnName="rfc" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="telContacto" ColumnName="telContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="PapeleriaModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="ult_actualizacion" ColumnName="ult_actualizacion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="existencia" ColumnName="existencia" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
