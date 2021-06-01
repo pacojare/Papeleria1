@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1401
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papeleria1", "Papeleria1\Papeleria1.csproj", "{D45A0437-05F0-491E-BB0A-F14CD414653C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Papeleria2", "Papeleria2\Papeleria2.csproj", "{1362C403-1DBD-4C31-AF63-EA52783A6134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D45A0437-05F0-491E-BB0A-F14CD414653C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D45A0437-05F0-491E-BB0A-F14CD414653C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D45A0437-05F0-491E-BB0A-F14CD414653C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D45A0437-05F0-491E-BB0A-F14CD414653C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1362C403-1DBD-4C31-AF63-EA52783A6134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1362C403-1DBD-4C31-AF63-EA52783A6134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1362C403-1DBD-4C31-AF63-EA52783A6134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1362C403-1DBD-4C31-AF63-EA52783A6134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
