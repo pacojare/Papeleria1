@@ -49,11 +49,16 @@ namespace Papeleria2.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,descripcion,precio,ult_actualizacion,imagen,existencia,stock,id_categoria")] Productos productos)
+        public ActionResult Create([Bind(Include = "id,nombre,descripcion,precio,imagen,existencia,stock,id_categoria")] Productos productos)
         {
             if (ModelState.IsValid)
             {
                 db.Productos.Add(productos);
+                db.SaveChanges();
+                int id = productos.id;
+                var prod = db.Productos.Find(id);
+                DateTime hoy = DateTime.Now;
+                prod.ult_actualizacion = hoy;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -87,8 +92,26 @@ namespace Papeleria2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(productos).State = EntityState.Modified;
+                int id = productos.id;
+                var prod = db.Productos.Find(id);
+                decimal precio_ant = prod.precio;
+                decimal precio_act = productos.precio;
+
+                prod.nombre = productos.nombre;
+                prod.descripcion = productos.descripcion;
+                prod.precio = productos.precio;
+                prod.imagen = productos.imagen;
+                prod.existencia = productos.existencia;
+                prod.stock = productos.stock;
+                prod.id_categoria = productos.id_categoria;
+
+                if (precio_act != precio_ant)
+                {
+                    DateTime hoy = DateTime.Now;
+                    prod.ult_actualizacion = hoy;
+                }
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.id_categoria = new SelectList(db.Categorias, "id", "nombre", productos.id_categoria);
