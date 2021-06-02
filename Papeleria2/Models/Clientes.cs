@@ -11,6 +11,7 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Clientes
     {
@@ -21,8 +22,13 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre Completo")]
+        [Required(ErrorMessage = "Debe ser mayor o menor")]
         public string nombre { get; set; }
+        [Display(Name = "Correo")]
         public string email { get; set; }
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "Ingrese contraseña")]
         public string contrasenia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

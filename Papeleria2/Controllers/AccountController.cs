@@ -166,14 +166,17 @@ namespace Papeleria2.Controllers
 
                     bool dominio = user.Email.ToString().Contains("@lagoma.com");
                     if (dominio)
-                    {
-                        string correo = model.Email;
-                        return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });
+                    {                      
+                            string correo = model.Email;
+                            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });                     
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        Session["name"] = "";
+                        Session["correo"] = user.Email;
+                    
                     }
+                    return RedirectToAction("Create", "Clientes");
                 }
                 AddErrors(result);
             }
