@@ -331,11 +331,12 @@
     <Content Include="Views\Paqueteria\Details.cshtml" />
     <Content Include="Views\Paqueteria\Edit.cshtml" />
     <Content Include="Views\Paqueteria\Index.cshtml" />
+    <Content Include="Views\Carro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\Productos\" />
     <Folder Include="Views\Acceso\" />
-    <Folder Include="Views\Carro\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

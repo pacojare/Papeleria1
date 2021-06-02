@@ -18,6 +18,6 @@ namespace Papeleria2.Models
                 get;
                 set;
             }
-        }
+        
     }
 }
