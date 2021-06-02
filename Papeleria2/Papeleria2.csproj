@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CatalogoController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
@@ -328,6 +329,8 @@
     <Content Include="Views\Paqueteria\Details.cshtml" />
     <Content Include="Views\Paqueteria\Edit.cshtml" />
     <Content Include="Views\Paqueteria\Index.cshtml" />
+    <Content Include="Views\Catalogo\BuscaProd.cshtml" />
+    <Content Include="Views\Catalogo\prodCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
