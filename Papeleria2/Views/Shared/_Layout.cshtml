@@ -29,6 +29,13 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>
+                        @using (Html.BeginForm("BuscaProd", "Catalogo", FormMethod.Post, new { @class = "form-inline"}))
+                        {
+                            <input class="form-control mr-sm-2" type="text" id="nomBuscar" name="nomBuscar" placeholder="Buscar"/>
+                            <button class="btn btn-success" type="submit" value="submit">Buscar</button>
+                        }
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
