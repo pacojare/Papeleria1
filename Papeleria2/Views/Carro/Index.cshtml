@@ -17,13 +17,16 @@
 
         <h3>Lista de productos</h3>
         <table cellpadding="2" cellspacing="2" border="1">
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Foto</th>
-                <th>Precio</th>
-                <th>Comprar</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Opción</th>
+                    <th>Nombre</th>
+                    <th>Foto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
             @foreach (Item item in (List<Item>)Session["cart"])
             {
             <tr>

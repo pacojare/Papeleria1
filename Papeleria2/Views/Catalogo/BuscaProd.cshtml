@@ -19,7 +19,7 @@
         <td><img src="~/Content/img/productos/@producto.imagen" width="60"/></td>
         <td>@producto.precio</td>
         <td align="center">
-            <a href="@Url.Action("Comprar", "Carro", new {id = producto.id })"></a>
+            <a href="@Url.Action("Agregar", "Carro", new {id = producto.id })">Agregar al carrito</a>
         </td>
 
     </tr>
