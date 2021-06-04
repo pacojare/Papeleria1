@@ -46,7 +46,7 @@ namespace Papeleria2.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,email,contrasenia")] Clientes clientes)
+        public ActionResult Create([Bind(Include = "id,nombre,email,contrasenia,cp,entidad_federativa,ciudad,colonia,direccion,num_tarjeta,mes_expiracion,anio_expiracion,cvv,tipo_tarjeta")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Papeleria2.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,email,contrasenia")] Clientes clientes)
+        public ActionResult Edit([Bind(Include = "id,nombre,email,contrasenia,cp,entidad_federativa,ciudad,colonia,direccion,num_tarjeta,mes_expiracion,anio_expiracion,cvv,tipo_tarjeta")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {

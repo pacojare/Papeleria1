@@ -21,7 +21,36 @@
         <th>
             @Html.DisplayNameFor(model => model.contrasenia)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.cp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.entidad_federativa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colonia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_tarjeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mes_expiracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anio_expiracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cvv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_tarjeta)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -36,9 +65,39 @@
             @Html.DisplayFor(modelItem => item.contrasenia)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.DisplayFor(modelItem => item.cp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.entidad_federativa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colonia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_tarjeta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mes_expiracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anio_expiracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cvv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_tarjeta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }
