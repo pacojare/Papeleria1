@@ -13,29 +13,55 @@
     <link rel="stylesheet" href="~/Content/css/style.css">
 </head>
 <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+    <header>
+        <nav class="navegador">
+            <section class="contenedor-navegar navegar">
+                <div class="logo-navegar">
+                    <img src="~/Content/img/pape.png">
+                </div>
+                <div class="links-navegar">
+                    <div class="navegar-a">
+                        <div class="div-a">
+                            @Html.ActionLink("Nombre", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                    </div>
+                    <div class="navegar-a">
+                        <div class="div-a">
+                            @Html.ActionLink("Inicio", "Index", "Home")
+                        </div>
+                    </div>
+                    <div class="navegar-a">
+                        <div class="div-a">
+                            @Html.ActionLink("Acerca de", "About", "Home")
+                        </div>
+                    </div>
+                    <div class="navegar-a">
+                        <div class="div-a">
+                            @Html.ActionLink("Contacto", "Contact", "Home")
+                        </div>
+                    </div>                    
+                </div>
+                <div class="img-navegar">                    
+                    <div class="navegar-i">
+                        <div class="div-i">
+                            <a href=""><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                    <div class="navegar-i">
+                        <div class="div-i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <ul class="ul-li">
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </header>
+    @RenderBody()
     <div class="container body-content">
-        @RenderBody()
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
