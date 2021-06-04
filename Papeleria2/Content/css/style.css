@@ -240,7 +240,7 @@ header::before {
         vertical-align: top;
     }
 
-.navegar .links-navegar .navegar-a .div-a > p {
+.navegar .links-navegar .navegar-a .div-a > a {
     color: #DDD;
     text-decoration: none;
     font-size: 24px;
@@ -266,7 +266,7 @@ header::before {
     min-width: 140px;
 }
 
-.navegar-a li p, .img-navegar li p {
+.navegar-a li a, .img-navegar li a {
     background: #D30C28;
     color: #DDD;
     text-decoration: none;
@@ -280,7 +280,7 @@ header::before {
     display: block;
 }
 
-.navegar-a:hover li p, .navegar-i:hover li p {
+.navegar-a:hover li a, .navegar-i:hover li a {
     border-bottom: 3px solid #23475F;
     box-shadow: 5px 5px 10px rgba(0,0,0,.5);
 }
