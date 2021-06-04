@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PapeleriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PapeleriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categorias">
           <Key>
             <PropertyRef Name="id" />
@@ -22,15 +22,16 @@
           <Property Name="nombre" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="contrasenia" Type="nvarchar" MaxLength="30" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Dir_entregas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="calle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="cp" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="entidad_federativa" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ciudad" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="estado" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="num_tarjeta" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="mes_expiracion" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="anio_expiracion" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="cvv" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="tipo_tarjeta" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -62,7 +63,6 @@
           <Property Name="fecha_entrega" Type="date" />
           <Property Name="fecha_envio" Type="date" />
           <Property Name="id_cliente" Type="int" Nullable="false" />
-          <Property Name="id_dir_entrega" Type="int" Nullable="false" />
           <Property Name="id_paqueteria" Type="int" Nullable="false" />
           <Property Name="status" Type="nvarchar" MaxLength="20" />
         </EntityType>
@@ -118,7 +118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__id_clie__30F848ED">
+        <Association Name="FK__Ordenes__id_clie__5AEE82B9">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -127,18 +127,6 @@
             </Principal>
             <Dependent Role="Ordenes">
               <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ordenes__id_dir___300424B4">
-          <End Role="Dir_entregas" Type="Self.Dir_entregas" Multiplicity="1" />
-          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dir_entregas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="id_dir_entrega" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -169,7 +157,6 @@
         <EntityContainer Name="PapeleriaModelStoreContainer">
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Dir_entregas" EntityType="Self.Dir_entregas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orden_productos" EntityType="Self.Orden_productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ordenes" EntityType="Self.Ordenes" Schema="dbo" store:Type="Tables" />
@@ -183,12 +170,8 @@
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Orden_productos" EntitySet="Orden_productos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__id_clie__30F848ED" Association="Self.FK__Ordenes__id_clie__30F848ED">
+          <AssociationSet Name="FK__Ordenes__id_clie__5AEE82B9" Association="Self.FK__Ordenes__id_clie__5AEE82B9">
             <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__id_dir___300424B4" Association="Self.FK__Ordenes__id_dir___300424B4">
-            <End Role="Dir_entregas" EntitySet="Dir_entregas" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
           <AssociationSet Name="FK__Ordenes__id_paqu__31EC6D26" Association="Self.FK__Ordenes__id_paqu__31EC6D26">
@@ -200,8 +183,7 @@
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PapeleriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -214,26 +196,6 @@
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__id_ca__2D27B809" FromRole="Categorias" ToRole="Productos" />
-        </EntityType>
-        <EntityType Name="Clientes">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="contrasenia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__id_clie__30F848ED" FromRole="Clientes" ToRole="Ordenes" />
-        </EntityType>
-        <EntityType Name="Dir_entregas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="calle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="colonia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Ordenes" Relationship="Self.FK__Ordenes__id_dir___300424B4" FromRole="Dir_entregas" ToRole="Ordenes" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -267,13 +229,11 @@
           <Property Name="fecha_entrega" Type="DateTime" Precision="0" />
           <Property Name="fecha_envio" Type="DateTime" Precision="0" />
           <Property Name="id_cliente" Type="Int32" Nullable="false" />
-          <Property Name="id_dir_entrega" Type="Int32" Nullable="false" />
           <Property Name="id_paqueteria" Type="Int32" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK__Ordenes__id_clie__30F848ED" FromRole="Ordenes" ToRole="Clientes" />
-          <NavigationProperty Name="Dir_entregas" Relationship="Self.FK__Ordenes__id_dir___300424B4" FromRole="Ordenes" ToRole="Dir_entregas" />
           <NavigationProperty Name="Orden_productos" Relationship="Self.FK__Orden_pro__id_or__35BCFE0A" FromRole="Ordenes" ToRole="Orden_productos" />
           <NavigationProperty Name="Paqueterias" Relationship="Self.FK__Ordenes__id_paqu__31EC6D26" FromRole="Ordenes" ToRole="Paqueterias" />
+          <NavigationProperty Name="Clientes" Relationship="PapeleriaModel.FK__Ordenes__id_clie__5AEE82B9" FromRole="Ordenes" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="Paqueterias">
           <Key>
@@ -318,30 +278,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ordenes__id_clie__30F848ED">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ordenes__id_dir___300424B4">
-          <End Role="Dir_entregas" Type="Self.Dir_entregas" Multiplicity="1" />
-          <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dir_entregas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="id_dir_entrega" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Orden_pro__id_or__35BCFE0A">
           <End Role="Ordenes" Type="Self.Ordenes" Multiplicity="1" />
           <End Role="Orden_productos" Type="Self.Orden_productos" Multiplicity="*" />
@@ -380,8 +316,6 @@
         </Association>
         <EntityContainer Name="PapeleriaContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categorias" EntityType="Self.Categorias" />
-          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
-          <EntitySet Name="Dir_entregas" EntityType="Self.Dir_entregas" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" />
           <EntitySet Name="Orden_productos" EntityType="Self.Orden_productos" />
           <EntitySet Name="Ordenes" EntityType="Self.Ordenes" />
@@ -390,14 +324,6 @@
           <AssociationSet Name="FK__Productos__id_ca__2D27B809" Association="Self.FK__Productos__id_ca__2D27B809">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__id_clie__30F848ED" Association="Self.FK__Ordenes__id_clie__30F848ED">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ordenes__id_dir___300424B4" Association="Self.FK__Ordenes__id_dir___300424B4">
-            <End Role="Dir_entregas" EntitySet="Dir_entregas" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
           <AssociationSet Name="FK__Orden_pro__id_or__35BCFE0A" Association="Self.FK__Orden_pro__id_or__35BCFE0A">
             <End Role="Ordenes" EntitySet="Ordenes" />
@@ -411,7 +337,44 @@
             <End Role="Paqueterias" EntitySet="Paqueterias" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="PapeleriaModel.Clientes" />
+          <AssociationSet Name="FK__Ordenes__id_clie__5AEE82B9" Association="PapeleriaModel.FK__Ordenes__id_clie__5AEE82B9">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="contrasenia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="cp" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="entidad_federativa" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ciudad" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="colonia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="num_tarjeta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="mes_expiracion" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="anio_expiracion" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cvv" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="tipo_tarjeta" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ordenes" Relationship="PapeleriaModel.FK__Ordenes__id_clie__5AEE82B9" FromRole="Clientes" ToRole="Ordenes" />
+        </EntityType>
+        <Association Name="FK__Ordenes__id_clie__5AEE82B9">
+          <End Type="PapeleriaModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="PapeleriaModel.Ordenes" Role="Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -425,26 +388,6 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="imagen" ColumnName="imagen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="PapeleriaModel.Clientes">
-              <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Dir_entregas">
-            <EntityTypeMapping TypeName="PapeleriaModel.Dir_entregas">
-              <MappingFragment StoreEntitySet="Dir_entregas">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="calle" ColumnName="calle" />
-                <ScalarProperty Name="colonia" ColumnName="colonia" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -479,7 +422,6 @@
                 <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
                 <ScalarProperty Name="fecha_envio" ColumnName="fecha_envio" />
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="id_dir_entrega" ColumnName="id_dir_entrega" />
                 <ScalarProperty Name="id_paqueteria" ColumnName="id_paqueteria" />
                 <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
@@ -512,6 +454,26 @@
                 <ScalarProperty Name="existencia" ColumnName="existencia" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="PapeleriaModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="tipo_tarjeta" ColumnName="tipo_tarjeta" />
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="anio_expiracion" ColumnName="anio_expiracion" />
+                <ScalarProperty Name="mes_expiracion" ColumnName="mes_expiracion" />
+                <ScalarProperty Name="num_tarjeta" ColumnName="num_tarjeta" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="entidad_federativa" ColumnName="entidad_federativa" />
+                <ScalarProperty Name="cp" ColumnName="cp" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
