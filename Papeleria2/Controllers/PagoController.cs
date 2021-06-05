@@ -16,11 +16,13 @@ namespace Papeleria2.Controllers
 
         public ActionResult CrearOrden()
         {
-          if (!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
                 Session["CrearOrden"] = "pend";
                 return RedirectToAction("Login", "Account");
-            }
+            } 
+
+           
 
             return View();
         }
