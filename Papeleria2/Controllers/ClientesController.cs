@@ -98,7 +98,6 @@ namespace Papeleria2.Controllers
                         {
                             return RedirectToAction("CrearOrden", "Pago");
                         }
-
                     }
                     else
                     {

@@ -19,34 +19,35 @@
                 <div class="logo-navegar">
                     <img src="~/Content/img/pape.png">
                 </div>
-                <div class="links-navegar">
+                <div  class="links-navegar">
+
+                    <div style="margin-top: 25px;" >
+
+                        @using (Html.BeginForm("BuscaProd", "Catalogo", FormMethod.Post, new { @class = "form-inline" }))
+                        {
+                            <input class="form-control mr-sm-2" type="text" id="nomBuscar" name="nomBuscar" placeholder="Buscar" />
+                            <button class="btn btn-success" type="submit" value="submit">Buscar</button>
+                        }
+                    </div>
+
                     <div class="navegar-a">
+
                         <div class="div-a">
                             @Html.ActionLink("Nombre", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                         </div>
                     </div>
                     <div class="navegar-a">
+                        
+
                         <div class="div-a">
+                            
                             @Html.ActionLink("Inicio", "Index", "Home")
                         </div>
                     </div>
-                    <div class="navegar-a">
-                        <div class="div-a">
-                            @Html.ActionLink("Acerca de", "About", "Home")
-                        </div>
-                    </div>
-                    <div class="navegar-a">
-                        <div class="div-a">
-                            @Html.ActionLink("Contacto", "Contact", "Home")
-                        </div>
-                    </div>                    
+                    
                 </div>
                 <div class="img-navegar">                    
-                    <div class="navegar-i">
-                        <div class="div-i">
-                            <a href=""><i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
+                    
                     <div class="navegar-i">
                         <div class="div-i">
                             <i class="fas fa-user"></i>

@@ -6,9 +6,9 @@
     string d = Session["dirCliente"].ToString();
     string fO = Session["fechaOrden"].ToString();
     string fE = Session["fPEntreg"].ToString();
-    int tTarj = Convert.ToInt32(Session["tTarj"].ToString());
+    long tTarj = Convert.ToInt64(Session["tTarj"].ToString());
     string fig = "";
-    string nTarj = Session["nTarj"].ToString();
+    string nTarj = Session["tTarj"].ToString();
     switch (tTarj)
     {
         case 1:
@@ -17,7 +17,7 @@
         case 2:
             fig = "martercard.png";
             break;
-            case 3:
+        case 3:
             fig = "american.png";
             break;
     }

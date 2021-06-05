@@ -8,39 +8,27 @@
     {
         @Html.AntiForgeryToken()
         string name = Convert.ToString(Session["name"]);
-        <ul class="nav navbar-nav navbar-right">
-            <li>
+        
                 <a class="btn" href="@Url.Action("Index", "Carro")">
                     <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
                     <span class="badge" style="color:lightblue">@num</span>
                 </a>
-            </li>
-            <li>
                 <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-target="dropdown">Hola @name <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>@Html.ActionLink("Mis Pedidos", "Index", "Pedidos", null, new { id = "add" })</li>
-                </ul>
-
-            </li>
-            <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-            </li>
-        </ul>
                 
+                    @Html.ActionLink("Mis Pedidos", "Index", "Pedidos", null, new { id = "add" })
+            
+                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            
     }
 }
 else
 {
-        <ul class="nav navbar-nav navbar-right">
-            <li>
                 <a class="btn" href="@Url.Action("Index", "Carro" )">
                     <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
                     <span class="badge" style="color:lightblue">@num</span>
                 </a>
-            </li>
             @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
             @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 
-        </ul>
     
 }
