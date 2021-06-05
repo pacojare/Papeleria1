@@ -340,12 +340,15 @@
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Invalida.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial1.cshtml" />
+    <Content Include="Views\Pago\CrearOrden.cshtml" />
+    <Content Include="Views\Pago\pagoNoAceptado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\Productos\" />
+    <Folder Include="Content\img\tarj\" />
     <Folder Include="Views\Acceso\" />
-    <Folder Include="Views\Pago\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

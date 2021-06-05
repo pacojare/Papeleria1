@@ -63,8 +63,16 @@ namespace Papeleria2.Controllers
         string mes_expiracion, string anio_expiracion, string cvv, string tipo_tarjeta)
         {
             Clientes clientes = new Clientes();
-            int? intIdt = db.Clientes.Max(c => (int?)c.id);
-            int id = (int)intIdt;
+            int id = 0;
+            if (!(db.Clientes.Max(c => (int?)c.id) == null))
+            {
+                id = db.Clientes.Max(c => c.id);
+            }
+            else
+            {
+                id = 0;
+            }
+            id++;
             if (Tarjeta(num_tarjeta, tipo_tarjeta, mes_expiracion, anio_expiracion, cvv))
             {
                 //comunicarse con el sistema de pago

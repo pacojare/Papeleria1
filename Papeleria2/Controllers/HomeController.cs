@@ -10,6 +10,8 @@ namespace Papeleria2.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["itemTotal"] == null)
+                Session["itemTotal"] = 0;
             return View();
         }
 
