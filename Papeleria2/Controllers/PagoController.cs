@@ -8,7 +8,6 @@ using Papeleria2.Models;
 
 namespace Papeleria2.Controllers
 {
-    [Authorize]
     public class PagoController : Controller
     {
         private PapeleriaContext db = new PapeleriaContext();
@@ -19,7 +18,6 @@ namespace Papeleria2.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
         public ActionResult CrearOrden()
         {
             if (!User.Identity.IsAuthenticated)
@@ -27,7 +25,8 @@ namespace Papeleria2.Controllers
                 Session["CrearOrden"] = "pend";
                 return RedirectToAction("Login", "Account");
             }
-
+            var orden = new Ordenes();
+            var db = new PapeleriaContext();
             string correo = User.Identity.Name;
 
             string fechaCreacion = DateTime.Today.ToShortDateString();

@@ -19,7 +19,7 @@
             <h3>Lista de productos</h3>
             <table class="tabla">
                 <thead>
-                    <tr>
+                    <tr class="info">
                         <th>Opción</th>
                         <th>Nombre</th>
                         <th>Foto</th>
@@ -43,7 +43,7 @@
                         </tr>
                     }
                         <tr>
-                            <td align="right" colspan="6">Total</td>
+                            <td align="right" colspan="5">Total</td>
                             <td>
                                 @{
                                     List<Item> cart = (List<Item>)Session["cart"];
@@ -54,7 +54,7 @@
                 </tbody>
             </table>
             <br />
-            <a class="boton" href="@Url.Action("Index","Home")">Continuar</a>
+            <a class="boton" href="@Url.Action("Index","Home")">Continuar Comprando</a>
             <p>
                 @Html.ActionLink("Confirmar Orden", "CrearOrden", "Pago", new { area = "" }, new { @class = "boton" })
             </p>

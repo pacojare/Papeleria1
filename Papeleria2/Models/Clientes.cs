@@ -44,7 +44,7 @@ namespace Papeleria2.Models
         public string direccion { get; set; }
         [Display(Name = "Número de Tarjeta")]
         [Required(ErrorMessage = "Ingrese Número de Tarjeta")]
-        [Range(100000000000,999999999999, ErrorMessage ="Debe ser 12 digitos")]
+        [Range(100000000000,999999999999, ErrorMessage ="Debe ser 12 y 16 digitos")]
         public string num_tarjeta { get; set; }
         [Display(Name = "Mes de Expiración")]
         [Required(ErrorMessage = "Ingrese Mes de Expiración")]
