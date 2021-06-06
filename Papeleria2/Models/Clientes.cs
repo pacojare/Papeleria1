@@ -22,7 +22,7 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
-        [Display(Name = "Nombre Completo")]
+        [Display(Name = "Nombre Completossssss")]
         [Required(ErrorMessage ="Ingrese nombre")]
         public string nombre { get; set; }
         public string email { get; set; }

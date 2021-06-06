@@ -79,7 +79,7 @@ namespace Papeleria2.Controllers
                 if (validaPago(nombre, entidad_federativa, cp, ciudad, colonia, direccion))
                 {
                     clientes.nombre = nombre;
-                    clientes.nombre = Session["correo"].ToString();
+                    clientes.email = Session["correo"].ToString();
                     clientes.entidad_federativa = entidad_federativa;
                     clientes.cp = cp;
                     clientes.ciudad = ciudad;
