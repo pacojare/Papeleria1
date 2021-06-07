@@ -58,7 +58,7 @@ namespace Papeleria2.Controllers
 
             return View(clientes);
         }*/
-        public ActionResult Create(string nombre, string email, string contrasenia,
+        public ActionResult Create(string nombre, string email,
         string cp, string estado, string entidad_federativa, string ciudad, string colonia, string direccion, string num_tarjeta,
         string mes_expiracion, string anio_expiracion, string cvv, string tipo_tarjeta)
         {
@@ -76,10 +76,11 @@ namespace Papeleria2.Controllers
             if (Tarjeta(num_tarjeta, tipo_tarjeta, mes_expiracion, anio_expiracion, cvv))
             {
                 //comunicarse con el sistema de pago
-                if (validaPago(nombre, entidad_federativa, cp, ciudad, colonia, direccion))
+                if (validaPago(nombre, direccion, colonia, entidad_federativa, num_tarjeta, mes_expiracion, anio_expiracion, cvv))
                 {
+                    clientes.id = id;
                     clientes.nombre = nombre;
-                    clientes.nombre = Session["correo"].ToString();
+                    clientes.email = Session["correo"].ToString();
                     clientes.entidad_federativa = entidad_federativa;
                     clientes.cp = cp;
                     clientes.ciudad = ciudad;
@@ -274,7 +275,7 @@ namespace Papeleria2.Controllers
             return retorna;
 
         }
-        private bool validaPago(string nombre, string entidad_federativa, string cp, string ciudad, string colonia, string direccion)
+        private bool validaPago(string nombre, string direccion, string colonia, string estado, string tarj, string mes, string anio, string cvv)
         {
             bool retorna = true;
             return retorna;

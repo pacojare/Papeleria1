@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Favor de registrar su información</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Clientes", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Clientes</h4>
     <hr />
@@ -26,16 +26,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.email, new { @Value = ViewBag.Correo, @readonly = true, @class = "control-label" })
             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.contrasenia, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.contrasenia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.contrasenia, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -88,36 +80,46 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.mes_expiracion, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.mes_expiracion, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.mes_expiracion, "", new { @class = "text-danger" })
+        <hr />
+        @Html.Label("Selecciona Tipo de tarjeta")
+        <hr />
+        <div class="col-md-4">
+            <div class="row">
+                <h2>&nbsp @Html.RadioButton("tipo_tarjeta", "Visa")</h2>
+                <img class="img-responsive" src="~/Content/img/tarj/visa.png" />
+            </div>
+            <div class="row">
+                <h2>&nbsp @Html.RadioButton("tipo_tarjeta", "Masterd")</h2>
+
+                <img class="img-responsive" src="~/Content/img/tarj/masterd.png" />
+            </div>
+            <div class="row">
+                <h2>&nbsp @Html.RadioButton("tipo_tarjeta", "American")</h2>
+
+                <img class="img-responsive" src="~/Content/img/tarj/american.png" />
+            </div>
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.anio_expiracion, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.anio_expiracion, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.anio_expiracion, "", new { @class = "text-danger" })
+        <div class="col-md-6">
+            <div class="row">
+                &nbsp &nbsp &nbsp @Html.Label("Mes de vencimiento")
+                <br />
+                &nbsp &nbsp &nbsp @Html.Editor("mes_expiracion", new { htmlAttribute = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                &nbsp &nbsp &nbsp @Html.Label("Año de vencimiento")
+                <br />
+                &nbsp &nbsp &nbsp @Html.Editor("anio_expiracion", new { htmlAttribute = new { @class = "form-control" } })
+            </div>
+            <div class="row">
+                &nbsp &nbsp &nbsp @Html.Label("No. CVV")
+                <br />
+                &nbsp &nbsp &nbsp @Html.Editor("cvv", new { htmlAttribute = new { @class = "form-control" } })
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.cvv, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cvv, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cvv, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.tipo_tarjeta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.tipo_tarjeta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.tipo_tarjeta, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    </div>    
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
