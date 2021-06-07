@@ -4,40 +4,43 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutCompras.cshtml";
 }
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>Details</h2>
 
-<h2>Details</h2>
+        <div>
+            <h4>Categorias</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
 
-<div>
-    <h4>Categorias</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.descripcion)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.descripcion)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.imagen)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.imagen)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.imagen)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.imagen)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</section>

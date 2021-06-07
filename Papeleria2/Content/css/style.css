@@ -407,3 +407,107 @@ header::before {
                 transition: .5s ease-in-out;
                 cursor: pointer;
             }
+
+
+
+.contenedor-general {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .contenedor-general .contenido-cuerpo {
+        width: 80%;
+    }
+
+.contenedor-producto {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+    .contenedor-producto h1 {
+        width: 100%;
+        font-size: 40px;
+        color: #3A3A3A;
+        margin: 50px 0;
+    }
+
+    .contenedor-producto .carta {
+        width: 21%;
+        height: 350px;
+        border: 2px solid #23475F;
+        border-radius: 10px;
+        margin: 0 25px 60px 0;
+        background: #FFF;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+
+        .contenedor-producto .carta > a {
+            text-decoration: none;
+        }
+
+        .contenedor-producto .carta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(189,140,53,1);
+        }
+
+    .contenedor-producto .carta-img {
+        width: 100%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .contenedor-producto .carta-img img {
+            width: 100%;
+        }
+
+    .contenedor-producto .carta-body {
+        padding: 15px;
+        height: 30%;
+        width: 100%;
+        background: -webkit-linear-gradient(top, #ffffff 0%, #BD8C35 100%);
+        background: linear-gradient(top, #ffffff 0%, #BD8C35 100%);
+        border-radius: 0 0 7px 7px;
+    }
+
+        .contenedor-producto .carta-body h2 {
+            text-align: center;
+            color: #3A3A3A;
+            font-size: 20px;
+            margin: 3px;
+        }
+
+        .contenedor-producto .carta-body h3 {
+            text-align: center;
+            color: #23475F;
+            font-size: 20px;
+        }
+
+
+
+.boton-general {
+    min-width: 150px;
+    display: inline-block;
+    text-align: center;
+    background: #23475F;
+    color: #FFF;
+    padding: 12px 0;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+    .boton-general:hover {
+        background: #BD8C35;
+        box-shadow: 2px 2px 15px rgba(0,0,0,.5);
+    }

@@ -3,48 +3,51 @@
 @{
     ViewBag.Title = "Details";
 }
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>Details</h2>
 
-<h2>Details</h2>
+        <div>
+            <h4>Empleados</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
 
-<div>
-    <h4>Empleados</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.departamento)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.departamento)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.departamento)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.departamento)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.contrasenia)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contrasenia)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.contrasenia)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.contrasenia)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</section>
