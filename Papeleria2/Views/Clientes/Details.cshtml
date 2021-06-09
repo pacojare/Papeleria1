@@ -118,10 +118,8 @@
 
             </dl>
         </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "boton-general" }) |
-            @Html.ActionLink("Back to List", "Index", new { @class = "boton-general" })
-            
-        </p>
-    </div>
+        <div class="boton-g">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) 
+            @Html.ActionLink("Back to List", "Index")
+        </div>
 </section>

@@ -6,7 +6,7 @@
 }
 <section class="contenedor-general">
     <div class="contenido-cuerpo">
-        <h2>Details</h2>
+        <h2>Detalles</h2>
 
         <div>
             <h4>Productos</h4>
@@ -78,9 +78,8 @@
 
             </dl>
         </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        <div class="boton-g">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) 
             @Html.ActionLink("Back to List", "Index")
-        </p>
-    </div>
+        </div>
 </section>
