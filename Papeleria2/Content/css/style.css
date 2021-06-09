@@ -460,6 +460,31 @@ header::before {
         color: #3A3A3A;
     }
 
+.contenido-cuerpo > p a {
+    min-width: 150px;
+    display: inline-block;
+    text-align: center;
+    background: #D30C28;
+    color: #FFF;
+    padding: 12px 0;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.contenido-cuerpo > h2 {
+    color: #23475F;
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.contenido-cuerpo h4 {
+    font-size: 25px;
+}
+
 .contenedor-producto {
     width: 85%;
     display: flex;
@@ -531,7 +556,7 @@ header::before {
 
 
 
-.boton-general {
+.boton-g a, .boton-general {
     min-width: 150px;
     display: inline-block;
     text-align: center;
@@ -539,13 +564,32 @@ header::before {
     color: #FFF;
     padding: 12px 0;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 17px;
     border-radius: 5px;
     transition: .5s ease-in-out;
     cursor: pointer;
 }
 
-    .boton-general:hover {
+    .boton-g a:hover, .boton-general:hover, .contenido-cuerpo > p a:hover {
         background: #BD8C35;
         box-shadow: 2px 2px 15px rgba(0,0,0,.5);
     }
+
+.contenido-td {
+    display: flex;
+    flex-direction: column;
+}
+
+    .contenido-td a {
+        text-align: center;
+        text-decoration: none;
+        color: #23475F;
+        transition: .5 ease-in-out;
+    }
+
+        .contenido-td a:hover {
+            color: #BD8C35;
+        }
+
+
+

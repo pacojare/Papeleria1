@@ -6,10 +6,10 @@
 }
 <section class="contenedor-general">
     <div class="contenido-cuerpo">
-        <h2>Index</h2>
+        <h2>Lista de Productos</h2>
 
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Crear Nuevo", "Create")
         </p>
         <table class="table">
             <tr>
@@ -67,10 +67,10 @@
     <td>
         @Html.DisplayFor(modelItem => item.Categorias.nombre)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+    <td class="contenido-td">
+        @Html.ActionLink("Editar", "Edit", new { id = item.id })
+        @Html.ActionLink("Detalles", "Details", new { id = item.id })
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
     </td>
 </tr>
 }
