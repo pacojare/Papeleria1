@@ -12,13 +12,11 @@ namespace Papeleria2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Orden_productos
+    public partial class Dir_entregas
     {
-        public Nullable<int> cantidad { get; set; }
-        public int id_producto { get; set; }
-        public int id_orden { get; set; }
-    
-        public virtual Ordenes Ordenes { get; set; }
-        public virtual Productos Productos { get; set; }
+        public int id { get; set; }
+        public string calle { get; set; }
+        public string colonia { get; set; }
+        public string estado { get; set; }
     }
 }

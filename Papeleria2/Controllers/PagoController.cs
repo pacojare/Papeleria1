@@ -71,12 +71,36 @@ namespace Papeleria2.Controllers
                     var dirEnt = (from d in db.Clientes
                                   where d.id == cliente.id
                                   select d).ToList().FirstOrDefault();
-                    int idDir = dirEnt.id;
+                    String idDir = dirEnt.direccion;
                     return RedirectToAction("pagoAceptado", routeValues: new { idC = idClient, idD = idDir });
                 }
             }
+            if (tipoPago.Equals("P"))
+            {
+                
+                    var dirEnt = (from d in db.Clientes
+                                  where d.id == cliente.id
+                                  select d).ToList().FirstOrDefault();
+                    String idDir = dirEnt.direccion;
+                    return RedirectToAction("pagoPaypal", routeValues: new { idC = idClient, idD = idDir });
+                
+            }
             return View();
             
+        }
+        public ActionResult pagoPaypal(int idC, String idD)
+        {
+            Session["idDir"] = idC;
+            Session["idClient"] = idD;
+
+            return View();
+        }
+        public ActionResult pagandoPaypal(int idC, String idD)
+        {
+            Session["idDir"] = idC;
+            Session["idClient"] = idD;
+
+            return View();
         }
         public ActionResult pagoNoAceptado()
         {
@@ -100,6 +124,46 @@ namespace Papeleria2.Controllers
             Session["nConfirma"] = NumConfirPago;
             return retorna;
         }
+         public ActionResult pagoAceptado(int idC, String idD)
+        {
+            Ordenes orden_cliente = new Ordenes();
+            int idOrden = 0;
+            if (!(db.Ordenes.Max(o => (int?)o.id) == null))
+            {
+                idOrden = db.Ordenes.Max(o => o.id);
+            }
+            else
+            {
+                idOrden = 0;
+            }
+            idOrden++;
+            orden_cliente.id = idOrden;
+            orden_cliente.fecha_creacion = DateTime.Today;
+            var carro = Session["cart"] as List<Item>;
+            var total = carro.Sum(item => item.Producto.precio * item.Cantidad);
+            orden_cliente.total = total;
+            orden_cliente.id_cliente = idC;
+            orden_cliente.dir_entrega = idD;
+            db.Ordenes.Add(orden_cliente);
+            db.SaveChanges();
 
+            Orden_productos ordenProd;
+            List<Orden_productos> listaProdOrd = new List<Orden_productos>();
+            foreach(Item linea in carro)
+            {
+                ordenProd = new Orden_productos();
+                ordenProd.id_orden = orden_cliente.id;
+                ordenProd.id_producto = linea.Producto.id;
+                ordenProd.cantidad = linea.Cantidad;
+                db.Orden_productos.Add(ordenProd);
+            }
+            db.SaveChanges();
+            Session["cart"] = null;
+            Session["nConfirma"] = null;
+            Session["itemTotal"] = 0;
+            return View();
+
+        }
     }
+
 }

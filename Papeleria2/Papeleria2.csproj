@@ -193,6 +193,9 @@
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dir_entregas.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Empleados.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -343,6 +346,9 @@
     <Content Include="Views\Shared\_LoginPartial1.cshtml" />
     <Content Include="Views\Pago\CrearOrden.cshtml" />
     <Content Include="Views\Pago\pagoNoAceptado.cshtml" />
+    <Content Include="Views\Pago\pagoAceptado.cshtml" />
+    <Content Include="Views\Pago\pagoPaypal.cshtml" />
+    <Content Include="Views\Pago\pagandoPaypal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,16 +7,16 @@
       <Diagram DiagramId="3ec516345a884b6f8cc74b315ba83041" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="PapeleriaModel.Categorias" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PapeleriaModel.Empleados" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PapeleriaModel.Orden_productos" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PapeleriaModel.Ordenes" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PapeleriaModel.Paqueterias" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PapeleriaModel.Productos" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
         <AssociationConnector Association="PapeleriaModel.FK__Productos__id_ca__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="PapeleriaModel.FK__Orden_pro__id_or__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="PapeleriaModel.FK__Orden_pro__id_pr__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="PapeleriaModel.FK__Ordenes__id_paqu__31EC6D26" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PapeleriaModel.Clientes" Width="1.5" PointX="1.25" PointY="0.75" />
-        <AssociationConnector Association="PapeleriaModel.FK__Ordenes__id_clie__5AEE82B9" />
+        <EntityTypeShape EntityType="PapeleriaModel.Ordenes" Width="1.5" PointX="3.5" PointY="8.5" />
+        <AssociationConnector Association="PapeleriaModel.FK__Ordenes__id_clie__73BA3083" />
+        <EntityTypeShape EntityType="PapeleriaModel.Dir_entregas" Width="1.5" PointX="5.875" PointY="4.75" />
+        <EntityTypeShape EntityType="PapeleriaModel.Orden_productos" Width="1.5" PointX="5.75" PointY="11" />
+        <AssociationConnector Association="PapeleriaModel.FK__Orden_pro__id_or__03F0984C" />
+        <AssociationConnector Association="PapeleriaModel.FK__Orden_pro__id_pr__02FC7413" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
