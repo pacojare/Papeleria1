@@ -169,13 +169,14 @@ namespace Papeleria2.Controllers
                     if (dominio)
                     {                      
                             string correo = model.Email;
-                            return RedirectToAction("Index", "Usuario", routeValues: new { email = correo });                     
+                        string pass = model.Password;
+                        return RedirectToAction("Index", "Usuario", routeValues: new { email = correo, pass = pass });                     
                     }
                     else
                     {
                         Session["name"] = "";
                         Session["correo"] = user.Email;
-                    
+                        Session["pass"] = model.Password;
                     }
                     return RedirectToAction("Create", "Clientes");
                 }

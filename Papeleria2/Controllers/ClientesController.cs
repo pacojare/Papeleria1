@@ -47,7 +47,7 @@ namespace Papeleria2.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        /*public ActionResult Create([Bind(Include = "id,nombre,email,contrasenia,cp,entidad_federativa,ciudad,colonia,direccion,num_tarjeta,mes_expiracion,anio_expiracion,cvv,tipo_tarjeta")] Clientes clientes)
+        public ActionResult Create([Bind(Include = "id,nombre,email,contrasenia,cp,entidad_federativa,ciudad,colonia,direccion,num_tarjeta,mes_expiracion,anio_expiracion,cvv,tipo_tarjeta")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
@@ -57,8 +57,8 @@ namespace Papeleria2.Controllers
             }
 
             return View(clientes);
-        }*/
-        public ActionResult Create(string nombre, string email,
+        }
+        /*public ActionResult Create(string nombre, string email,
         string cp, string estado, string entidad_federativa, string ciudad, string colonia, string direccion, string num_tarjeta,
         string mes_expiracion, string anio_expiracion, string cvv, string tipo_tarjeta)
         {
@@ -76,17 +76,20 @@ namespace Papeleria2.Controllers
             if (Tarjeta(num_tarjeta, tipo_tarjeta, mes_expiracion, anio_expiracion, cvv))
             {
                 //comunicarse con el sistema de pago
-                if (validaPago(nombre, direccion, colonia, entidad_federativa, num_tarjeta, mes_expiracion, anio_expiracion, cvv))
-                {
-                    clientes.id = id;
-                    clientes.nombre = nombre;
-                    clientes.email = Session["correo"].ToString();
-                    clientes.entidad_federativa = entidad_federativa;
-                    clientes.cp = cp;
-                    clientes.ciudad = ciudad;
-                    clientes.colonia = colonia;
-                    clientes.direccion = direccion;
-                    clientes.num_tarjeta = num_tarjeta;
+                clientes.id = id;
+                    clientes.nombre = "Siu";
+                    clientes.email = "siu@gmail.com";
+                    clientes.entidad_federativa = "Siu";
+                    clientes.cp = "Siu";
+                    clientes.ciudad = "Siu";
+                    clientes.colonia = "Siu";
+                    clientes.direccion = "Siu";
+                    clientes.num_tarjeta = "Siu";
+                    clientes.mes_expiracion = "null";
+                    clientes.anio_expiracion = "null";
+                    clientes.tipo_tarjeta = "null";
+                    clientes.cvv = "000";
+                    clientes.contrasenia = "Hola123.";
                     db.Clientes.Add(clientes);
                     db.SaveChanges();
                     string[] nombres = clientes.nombre.ToString().Split(' ');
@@ -104,11 +107,7 @@ namespace Papeleria2.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                }
-                else
-                {
-                    return RedirectToAction("Invalida");
-                }
+                
 
             }
             else
@@ -117,7 +116,7 @@ namespace Papeleria2.Controllers
             }
             return View(clientes);
         }
-
+        */
         // GET: Clientes/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -196,7 +195,7 @@ namespace Papeleria2.Controllers
         private bool Tarjeta (string tarj,string tipo, string mes, string anio, string cvv)
         {
             //llamar al metodo luhn para verificar que es un numero valido de tarjeta
-            bool retorna = validaTarj(tarj);
+            bool retorna = true;
             if (retorna)
             {
                 if ((tarj.StartsWith("4")) && (tipo.Equals("Visa")))
@@ -252,7 +251,7 @@ namespace Papeleria2.Controllers
                 if (Char.IsDigit(c)) digitOnly.Append(c);               
             };
             if (digitOnly.Length > 18 || digitOnly.Length < 15) return false;
-            int sum = 0;
+            /*int sum = 0;
             int digit = 0;
             int addend = 0;
             bool timesTwo = false;
@@ -271,7 +270,7 @@ namespace Papeleria2.Controllers
                 sum += addend;
                 timesTwo = !timesTwo;
             }
-            retorna = ((sum % 10) == 0);
+            retorna = ((sum % 10) == 0);*/
             return retorna;
 
         }

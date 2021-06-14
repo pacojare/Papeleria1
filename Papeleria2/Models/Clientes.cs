@@ -11,7 +11,8 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,18 +22,43 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre Completo")]
+        [Required(ErrorMessage = "Ingrese nombre")]
         public string nombre { get; set; }
         public string email { get; set; }
         public string contrasenia { get; set; }
+        [Display(Name = "Código Postal")]
+        [Required(ErrorMessage = "Ingrese Código Postal")]
         public string cp { get; set; }
+        [Display(Name = "Entidad Federativa")]
+        [Required(ErrorMessage = "Ingrese Entidad")]
         public string entidad_federativa { get; set; }
+        [Display(Name = "Ciudad")]
+        [Required(ErrorMessage = "Ingrese Ciudad")]
         public string ciudad { get; set; }
+        [Display(Name = "Colonia")]
+        [Required(ErrorMessage = "Ingrese Colonia")]
         public string colonia { get; set; }
+        [Display(Name = "Dirección")]
+        [Required(ErrorMessage = "Ingrese Dirección")]
         public string direccion { get; set; }
+        [Display(Name = "Número de Tarjeta")]
+        [Required(ErrorMessage = "Ingrese Número de Tarjeta")]
+        [Range(1000000000000000, 9999999999999999, ErrorMessage = "Deben ser 16 digitos")]
         public string num_tarjeta { get; set; }
+        [Display(Name = "Mes de Expiración")]
+        [Required(ErrorMessage = "Ingrese Mes de Expiración")]
+        [Range(00, 13, ErrorMessage = "Debe ser 2 digitos")]
         public string mes_expiracion { get; set; }
+        [Display(Name = "Año de expiración")]
+        [Required(ErrorMessage = "Ingrese Año de expiración")]
+        [Range(0000, 9999, ErrorMessage = "Debe ser 4 digitos")]
         public string anio_expiracion { get; set; }
+        [Display(Name = "CVV")]
+        [Required(ErrorMessage = "Ingrese CVV")]
         public string cvv { get; set; }
+        [Display(Name = "Tipo de Tarjeta")]
+        [Required(ErrorMessage = "Ingrese tipo de Tarjeta")]
         public string tipo_tarjeta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
