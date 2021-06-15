@@ -1,0 +1,52 @@
+﻿
+@using Papeleria2.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historial de Pedidos</h2>
+
+<table class="table table-bordered table-responsive table-striped">
+
+    @{ if (Session["misPedido"] != null)
+        {
+            foreach (PedidoCliente pedido in (List<PedidoCliente>)Session["misPedidos"])
+            {
+                int idOrd = pedido.Orden.id;
+                <tr>
+                    <td>Fecha: @pedido.Fecha</td>
+                    <td>Envio: @pedido.envio</td>
+                    <td>Entrega: @pedido.status</td>
+                </tr>
+
+                foreach (ItemPedido item in (List<ItemPedido>)Session["Pedido"])
+                {
+                    if (item.idOrd == idOrd)
+                    {
+                        <tr>
+                            <td>@item.Product.nombre</td>
+                            <td><img class="img-responsive" src="~/Content/img/Productos/@item.Product.imagen"> </td>
+
+                            <td>@item.Product.precio</td>
+                            <td>@item.cantidad</td>
+                            <td>@(item.Product.precio * item.cantidad)</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td align="right" colspan="4">Total</td>
+                    <td>
+                        @pedido.Total;
+                    </td>
+                </tr>
+
+
+            }
+        }
+
+    }
+</table>
+
+<br>
+<a class="btn btn-warning" href="@Url.Action("Index","Home")"> Ir a Tienda</a>
