@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Papeleria2.Models.Ordenes>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_LayoutAlmacen.cshtml";
+}
+
+<h2>Index1</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Fecha creación
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Número de guía
+        </th>
+        <th>
+            Número de confirmación
+        </th>
+        <th>
+            Fecha de entrega
+        </th>
+        <th>
+            Fecha de envío
+        </th>
+        <th>
+            Dirección de entrega
+        </th>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Paquetería
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    String val;
+    if (item.fecha_envio.HasValue)
+    {
+        val = item.fecha_envio.GetValueOrDefault().ToShortDateString();
+    }
+    else
+    {
+        val = "";
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_guia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_entrega)
+        </td>
+
+        <td>
+            @Html.TextBoxFor(modelItem => item.fecha_envio, new { @class = "form-control", @Value = val, @readonly = "readonly" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.entidad_federativa)
+            @Html.DisplayFor(modelItem => item.Clientes.ciudad)
+            @Html.DisplayFor(modelItem => item.Clientes.colonia)
+            @Html.DisplayFor(modelItem => item.dir_entrega)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paqueterias.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit1", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>

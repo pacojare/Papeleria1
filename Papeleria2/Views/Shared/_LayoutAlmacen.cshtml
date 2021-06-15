@@ -35,6 +35,15 @@
                             <li>@Html.ActionLink("Ver todas", "Index", "Paqueteria", null, new { id = "list" })</li>
                         </ul>
                     </div>
+                    <div class="navegar-a">
+                        <div class="div-a">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Ordenes pendientes<span class=" caret"></span></a>
+                        </div>
+                        <ul class="ul-li">
+                            <li>@Html.ActionLink("Fecha de envío", "Index", "Ordenes", null, new { id = "list" })</li>
+                            <li>@Html.ActionLink("Fecha de entrega", "Index1", "Ordenes", null, new { id = "list" })</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="img-navegar">
                     <div class="navegar-i">
