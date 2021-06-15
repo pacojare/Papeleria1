@@ -9,7 +9,7 @@
 
 <table class="table table-bordered table-responsive table-striped">
 
-    @{ if (Session["misPedido"] != null)
+    @{ if (Session["misPedidos"] != null)
         {
             foreach (PedidoCliente pedido in (List<PedidoCliente>)Session["misPedidos"])
             {
