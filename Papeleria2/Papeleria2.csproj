@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\EnviosController.cs" />
+    <Compile Include="Controllers\OrdenesController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Controllers\PaqueteriaController.cs" />
     <Compile Include="Controllers\PedidosController.cs" />
@@ -353,6 +354,13 @@
     <Content Include="Views\Pago\pagoPaypal.cshtml" />
     <Content Include="Views\Pago\pagandoPaypal.cshtml" />
     <Content Include="Views\Pedidos\Index.cshtml" />
+    <Content Include="Views\Ordenes\Create.cshtml" />
+    <Content Include="Views\Ordenes\Delete.cshtml" />
+    <Content Include="Views\Ordenes\Details.cshtml" />
+    <Content Include="Views\Ordenes\Edit.cshtml" />
+    <Content Include="Views\Ordenes\Index.cshtml" />
+    <Content Include="Views\Ordenes\Index1.cshtml" />
+    <Content Include="Views\Ordenes\Edit1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

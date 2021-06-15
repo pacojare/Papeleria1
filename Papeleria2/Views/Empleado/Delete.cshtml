@@ -48,14 +48,17 @@
 
             @using (Html.BeginForm())
             {
-@Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <div class="boton-g">
-                    <input type="submit" value="Delete" class="boton-general" /> |
-                    @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <div class="boton-g">
+                        <input type="submit" value="Delete" class="boton-general" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
                 </div>
-                }
-            </div>
+            }
+        </div>
     </div>
+    
 </section>
