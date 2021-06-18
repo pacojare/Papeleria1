@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Papeleria2.Models.Categorias>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -17,57 +18,21 @@
 <section class="contenedor-flex">
     <div class="contenedor-categoria">
         <h1>Categorias</h1>
-        <div class="carta">
-            <a href='Url.Action("prodCategoria", "Catalogo", new {idCat = 1})'>
-                <div class="carta-body">
-                    <h2>Libretas de colores</h2>
-                </div>
-                <div class="carta-img">
-                    <img src="~/Content/img/pape.png" />
-                </div>
-            </a>
+        @foreach (var item in Model)
+        {
+            <div class="carta">
+                <a href="@Url.Action("prodCategoria", "Catalogo", new { idCat = @item.id, nombre = @item.nombre })">
+                    <div class="carta-body">
+                        <h2>@item.nombre</h2>
+                    </div>
+                    <div class="carta-img">
+                        <img src="~/Content/img/pape.png" />
+                    </div>
+                </a>
+            </div>
+        }
+            
         </div>
-        <div class="carta">
-            <a href='Url.Action("prodCategoria", "Catalogo", new {idCat = 1})'>
-                <div class="carta-body">
-                    <h2>Lapices</h2>
-                </div>
-                <div class="carta-img">
-                    <img src="~/Content/img/pape.png" />
-                </div>
-            </a>
-        </div>
-        <div class="carta">
-            <a href='Url.Action("prodCategoria", "Catalogo", new {idCat = 1})'>
-                <div class="carta-body">
-                    <h2>Reglas</h2>
-                </div>
-                <div class="carta-img">
-                    <img src="~/Content/img/pape.png" />
-                </div>
-            </a>
-        </div>
-        <div class="carta">
-            <a href='Url.Action("prodCategoria", "Catalogo", new {idCat = 1})'>
-                <div class="carta-body">
-                    <h2>Borradores grandes</h2>
-                </div>
-                <div class="carta-img">
-                    <img src="~/Content/img/pape.png" />
-                </div>
-            </a>
-        </div>
-        <div class="carta">
-            <a href='Url.Action("prodCategoria", "Catalogo", new {idCat = 1})'>
-                <div class="carta-body">
-                    <h2>Bibliografias</h2>
-                </div>
-                <div class="carta-img">
-                    <img src="~/Content/img/pape.png" />
-                </div>
-            </a>
-        </div>
-    </div>
 </section>
 
 <section class="contenedor-flex">

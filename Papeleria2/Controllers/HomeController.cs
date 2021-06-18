@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Papeleria2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,17 @@ using System.Web.Mvc;
 
 namespace Papeleria2.Controllers
 {
+
     public class HomeController : Controller
     {
+        private PapeleriaContext db = new PapeleriaContext();
+
         public ActionResult Index()
         {
+            
             if (Session["itemTotal"] == null)
                 Session["itemTotal"] = 0;
-            return View();
+            return View(db.Categorias.ToList());
         }
 
         public ActionResult About()

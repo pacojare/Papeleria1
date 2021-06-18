@@ -33,29 +33,32 @@ namespace Papeleria2.Controllers
             return View();
         }
 
-        public ActionResult prodCategoria(int idCat)
+        public ActionResult prodCategoria(int idCat, String nombre)
         {
-            List<Productos> mercancia = null;
-            var query = from p in db.Productos
-                        where p.id == idCat
-                        select p;
-            if (idCat == 1)
+            using (db)
             {
-                //List<Productos> oficina = query.ToList();
-                mercancia = query.ToList(); ;
-                ViewBag.Catego = "Oficina";
+                List<Productos> mercancia = null;
+                var query = from p in db.Productos
+                            where p.id_categoria == idCat
+                            select p;
+                ViewBag.Catego = nombre;
+                mercancia = query.ToList();
+                ViewBag.productos = mercancia;
             }
-            if(idCat == 2)
-            {
-               // List<Productos> escolares = query.ToList();
-                mercancia = query.ToList(); 
-                ViewBag.Catego = "Escolares";
-
-            }
-            ViewBag.productos = mercancia;
             return View();
+            /* if (idCat == 1)
+             {
+                 List<Productos> oficina = query.ToList();
+                 mercancia = query.ToList();
+                 ViewBag.Catego = "Oficina";
+             }
+             if(idCat == 2)
+             {
+                // List<Productos> escolares = query.ToList();
+                 mercancia = query.ToList(); 
+                 ViewBag.Catego = "Escolares";
 
-
+             }*/
         }
     }
 }
