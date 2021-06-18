@@ -14,9 +14,11 @@ namespace Papeleria2.Controllers
 
         public ActionResult Index()
         {
-            
-            if (Session["itemTotal"] == null)
+            if(Session["itemTotal"] == null)
+            {
                 Session["itemTotal"] = 0;
+            }
+            
             return View(db.Categorias.ToList());
         }
 

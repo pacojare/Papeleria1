@@ -1,5 +1,15 @@
-﻿@{ 
-    string num = @Session["itemTotal"].ToString();
+﻿@using Papeleria2.Models;
+@{
+    List<Item> cart = (List<Item>)Session["cart"];
+    var num = "";
+    if (Session["cart"] == null)
+    {
+        num = "0";
+    }
+    else
+    {
+        num = cart.Sum(item => item.Cantidad).ToString();
+    }
 }
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
@@ -8,27 +18,27 @@
     {
         @Html.AntiForgeryToken()
         string name = Convert.ToString(Session["name"]);
-        
-                <a class="btn" href="@Url.Action("Index", "Carro")">
-                    <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
-                    <span class="badge" style="color:lightblue">@num</span>
-                </a>
-                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-target="dropdown">Hola @name <span class="caret"></span></a>
-                
-                    @Html.ActionLink("Mis Pedidos", "Index", "Pedidos", null, new { id = "add" })
-            
-                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-            
+
+        <a class="btn" href="@Url.Action("Index", "Carro")">
+            <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
+            <span class="badge" style="color:lightblue">@num</span>
+        </a>
+        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-target="dropdown">Hola @name <span class="caret"></span></a>
+
+        @Html.ActionLink("Mis Pedidos", "Index", "Pedidos", null, new { id = "add" })
+
+        <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+
     }
 }
 else
 {
-                <a class="btn" href="@Url.Action("Index", "Carro" )">
-                    <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
-                    <span class="badge" style="color:lightblue">@num</span>
-                </a>
-            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-            @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    <a class="btn" href="@Url.Action("Index", "Carro" )">
+        <i class="fa fa-shopping-cart" style="font-size:24px; color:lightblue"></i>
+        <span class="badge" style="color:lightblue">@num</span>
+    </a>
+    @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 
-    
+
 }

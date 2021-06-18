@@ -46,7 +46,7 @@
             @foreach (Item item in (List<Item>)Session["cart"])
             {
                 <tr>
-                    <td> <img class="img-responsive" src="~/Content/img/Productos/@item.Producto.imagen" /></td>
+                    <td> <img style=" width:150px; height:150px;" class="img-responsive" src="~/Content/img/Productos/@item.Producto.imagen" /></td>
                     <td>@item.Producto.nombre</td>
                     <td>@item.Producto.precio</td>
                     <td>@item.Cantidad</td>

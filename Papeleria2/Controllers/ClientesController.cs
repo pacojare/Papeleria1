@@ -53,7 +53,7 @@ namespace Papeleria2.Controllers
             {
                 db.Clientes.Add(clientes);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(clientes);

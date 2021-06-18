@@ -9,13 +9,16 @@ namespace Papeleria2.Controllers
 {
     public class CarroController : Controller
     {
+        
         // GET: Carro
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult Agregar(int id)
         {
+            
             ProductosCarro carro = new ProductosCarro();
             if (Session["cart"] == null)
             {
@@ -24,9 +27,11 @@ namespace Papeleria2.Controllers
                 String nam = p.nombre;
                 cart.Add(new Item { Producto = carro.find(id), Cantidad = 1 });
                 Session["cart"] = cart;
+                
             }
             else
             {
+
                 List<Item> cart = (List<Item>)Session["cart"];
                 int index = isExist(id);
                 if (index != -1)
@@ -37,6 +42,7 @@ namespace Papeleria2.Controllers
                 {
                     Productos p = carro.find(id);
                     String nam = p.nombre;
+                    
                     cart.Add(new Item { Producto = carro.find(id), Cantidad = 1 });
                 }
                 Session["cart"] = cart;
