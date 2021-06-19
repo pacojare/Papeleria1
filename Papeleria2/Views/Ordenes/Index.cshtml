@@ -4,89 +4,94 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAlmacen.cshtml";
 }
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>Index</h2>
 
-<h2>Index</h2>
+        <p>
+            @Html.ActionLink("Crear Nuevo", "Create")
+        </p>
+        <table class="table">
+            <tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        
-        <th>
-            Número de confirmación
-        </th>
-        <th>
-            Fecha de creación
-        </th>
-        <th>
-            Total
-        </th>
-        <th>
-            Número de guía
-        </th>
-        <th>
-            Fecha de entrega
-        </th>
-        <th>
-            Fecha de envío
-        </th>
-        <th>
-            Dirección de Entrega
-        </th>
+                <th>
+                    Número de confirmación
+                </th>
+                <th>
+                    Fecha de creación
+                </th>
+                <th>
+                    Total
+                </th>
+                <th>
+                    Número de guía
+                </th>
+                <th>
+                    Fecha de entrega
+                </th>
+                <th>
+                    Fecha de envío
+                </th>
+                <th>
+                    Dirección de Entrega
+                </th>
 
-        <th>
-            Paquetería
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                    Paquetería
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    String val;
-    if (item.fecha_envio.HasValue) {
-        val = item.fecha_envio.GetValueOrDefault().ToShortDateString();
-    }
-    else
-    {
-        val = "";
-    }
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_creacion, new { @class = "form-control", @Value = item.fecha_creacion.ToShortDateString(), @readonly = "readonly" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.num_guia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_entrega)
-        </td>
-        <td>
+            @foreach (var item in Model)
+            {
+                String val;
+                if (item.fecha_envio.HasValue)
+                {
+                    val = item.fecha_envio.GetValueOrDefault().ToShortDateString();
+                }
+                else
+                {
+                    val = "";
+                }
+                <tr>
 
-            @Html.TextBoxFor(modelItem => item.fecha_envio, new { @class = "form-control", @Value = val, @readonly = "readonly" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dir_entrega)
-            @Html.DisplayFor(modelItem => item.Clientes.entidad_federativa)
-            @Html.DisplayFor(modelItem => item.Clientes.ciudad)
-            @Html.DisplayFor(modelItem => item.Clientes.colonia)
-        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha_creacion, new { @class = "form-control", @Value = item.fecha_creacion.ToShortDateString(), @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.num_guia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha_entrega)
+                    </td>
+                    <td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Paqueterias.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-        </td>
-    </tr>
-}
+                        @Html.TextBoxFor(modelItem => item.fecha_envio, new { @class = "form-control", @Value = val, @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dir_entrega)
+                        @Html.DisplayFor(modelItem => item.Clientes.entidad_federativa)
+                        @Html.DisplayFor(modelItem => item.Clientes.ciudad)
+                        @Html.DisplayFor(modelItem => item.Clientes.colonia)
+                    </td>
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paqueterias.nombre)
+                    </td>
+                    <td class="contenido-td">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.id })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

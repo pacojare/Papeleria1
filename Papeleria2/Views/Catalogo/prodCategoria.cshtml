@@ -3,11 +3,11 @@
     ViewBag.Title = "prodCategoria";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>@ViewBag.Catego</h2>
 
-<h2>@ViewBag.Catego</h2>
 
-<div class="container">
-    <div class="col-xs-12 col-md-9">
         <div class="row">
             @foreach (Productos item in ViewBag.productos)
             {
@@ -29,6 +29,6 @@
                 </div>
             }
         </div>
-    </div>
-</div>
 
+    </div>
+</section>

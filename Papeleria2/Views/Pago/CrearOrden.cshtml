@@ -23,65 +23,68 @@
     }
 
     }
-
-<h2>Su orden ha sido Completada</h2>
-<div class="container">
-    <div class="col-md-6" style="background-color:beige">
-        <h4 class="bg-info"> Clientes: @c</h4>
-        <h4 class="bg-info"> Dirección de Entrega: @d </h4>
-        <h4 class="bg-info"> Fecha de orden : @fO</h4>
-        <h4 class="bg-info"> Fecha de Entrega: @fE</h4>
-    </div>
-    <div class="col-md-8 bg-success">
-        <table class="table table-bordered table-responsive table-striped">
-            <thead>
-                <tr class="info">
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            @foreach (Item item in (List<Item>)Session["cart"])
-            {
-                <tr>
-                    <td> <img style=" width:150px; height:150px;" class="img-responsive" src="~/Content/img/Productos/@item.Producto.imagen" /></td>
-                    <td>@item.Producto.nombre</td>
-                    <td>@item.Producto.precio</td>
-                    <td>@item.Cantidad</td>
-                    <td>@(item.Producto.precio * item.Cantidad)</td>
-                </tr>
-            }
-            <tr>
-                <td align="right" colspan="6">Total</td>
-                <td>
-                    @{
-                        List<Item> cart = (List<Item>)Session["cart"];
-                        var total = cart.Sum(item => item.Producto.precio * item.Cantidad);
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>Su orden ha sido Completada</h2>
+        <div class="container">
+            <div class="col-md-6" style="background-color:beige">
+                <h4 class="bg-info"> Clientes: @c</h4>
+                <h4 class="bg-info"> Dirección de Entrega: @d </h4>
+                <h4 class="bg-info"> Fecha de orden : @fO</h4>
+                <h4 class="bg-info"> Fecha de Entrega: @fE</h4>
+            </div>
+            <div class="col-md-8 bg-success">
+                <table class="table table-bordered table-responsive table-striped">
+                    <thead>
+                        <tr class="info">
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    @foreach (Item item in (List<Item>)Session["cart"])
+                    {
+                        <tr>
+                            <td> <img style=" width:150px; height:150px;" class="img-responsive" src="~/Content/img/Productos/@item.Producto.imagen" /></td>
+                            <td>@item.Producto.nombre</td>
+                            <td>@item.Producto.precio</td>
+                            <td>@item.Cantidad</td>
+                            <td>@(item.Producto.precio * item.Cantidad)</td>
+                        </tr>
                     }
-                    @total
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-8">
-        <p>Elija su forma de pago haciendo clic en la imagen de su elección</p>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-2">
-                <a href="@Url.Action("Pagar", "Pago", new { tipoPago = "T"})" style="text-decoration:none">
+                    <tr>
+                        <td align="right" colspan="6">Total</td>
+                        <td>
+                            @{
+                                List<Item> cart = (List<Item>)Session["cart"];
+                                var total = cart.Sum(item => item.Producto.precio * item.Cantidad);
+                            }
+                            @total
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-8">
+                <p>Elija su forma de pago haciendo clic en la imagen de su elección</p>
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-2 crear-pago">
+                        <img src="~/Content/img/tarj/paypal.png" class="img-responsive img-rounded" />
+                        <a href="@Url.Action("Pagar", "Pago", new { tipoPago = "T"})" style="text-decoration:none">
 
-                    @nTarj
-                </a>
+                            @nTarj
+                        </a>
+                    </div>
+                    <div class="col-md-3 crear-pago">
+                        <a href="@Url.Action("Pagar", "Pago", new { tipoPago = "P" })" style="text-decoration:none">
+                            <img src="~/Content/img/tarj/paypal.png" class="img-responsive img-rounded" />
+                            Paypal
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3">
-                <a href="@Url.Action("Pagar", "Pago", new { tipoPago = "P" })" style="text-decoration:none">
-                    <img src="~/Content/img/tarj/paypal.png" class="img-responsive img-rounded" />
-                    Paypal
-                </a>
-            </div>
+
         </div>
     </div>
-    
-</div>
-
+</section>

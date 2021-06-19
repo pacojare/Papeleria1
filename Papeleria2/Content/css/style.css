@@ -294,7 +294,7 @@ header::before {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 60px 0;
+    margin: 30px 0;
 }
 
     .contenedor-tabla .contenido-tabla {
@@ -302,8 +302,10 @@ header::before {
     }
 
         .contenedor-tabla .contenido-tabla > h2 {
+            color: #23475F;
             text-align: center;
-            font-size: 59px;
+            font-size: 38px;
+            font-weight: bold
         }
 
         .contenedor-tabla .contenido-tabla > h3 {
@@ -591,5 +593,16 @@ header::before {
             color: #BD8C35;
         }
 
+.crear-pago {
+}
 
 
+    .crear-pago a {
+        text-decoration: none;
+        color: #23475F;
+        text-align: center;
+    }
+
+    .crear-pago a:hover {
+        cursor: pointer;
+    }

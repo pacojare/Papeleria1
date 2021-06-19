@@ -6,9 +6,9 @@
 }
 <section class="contenedor-general">
     <div class="contenido-cuerpo">
-        <h2>Delete</h2>
+        <h2>Eliminar</h2>
 
-        <h3>Are you sure you want to delete this?</h3>
+        <h3>¿Estas seguro de querer eliminar el producto?</h3>
         <div>
             <h4>Paqueterias</h4>
             <hr />
@@ -81,15 +81,15 @@
 
             @using (Html.BeginForm())
             {
-@Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <div class="boton-g">
-                    <input type="submit" value="Delete" class="boton-general" /> |
-                    @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <div class="boton-g">
+                        <input type="submit" value="Delete" class="boton-general" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
                 </div>
-            </div>
             }
-            
-    </div>
+
+        </div>
 </section>
