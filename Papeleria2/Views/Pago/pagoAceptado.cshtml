@@ -1,16 +1,21 @@
 ﻿
 @{
-    ViewBag.Title = "pagoAceptado";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "pagoAceptado";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="contenedor-general">
+    <div class="contenido-cuerpo">
+        <h2>Gracias por su compra</h2>
 
-<h2>Gracias por su compra</h2>
-
-@using (Html.BeginForm("Index","Home", FormMethod.Get))
-{
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Continuar" class="btn btn-default"/>
-        </div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Continuar" class="boton-general" />
+                </div>
+            </div>
+        }
     </div>
-}
+</section>
