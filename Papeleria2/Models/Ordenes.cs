@@ -25,7 +25,6 @@ namespace Papeleria2.Models
         public string dir_entrega { get; set; }
         public Nullable<int> id_paqueteria { get; set; }
         [Display(Name = "Número de confirmación")]
-        [Required(ErrorMessage = "Falta No. Confirmación")]
         public string status { get; set; }
     
         public virtual Clientes Clientes { get; set; }
