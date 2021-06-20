@@ -11,7 +11,8 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,18 +22,44 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre completo")]
+        [Required(ErrorMessage ="Falta nombre")]
         public string nombre { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Falta email")]
         public string email { get; set; }
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "Falta Contrasela")]
         public string contrasenia { get; set; }
+        [Display(Name = "CP")]
+        [Required(ErrorMessage = "Falta CP")]
         public string cp { get; set; }
+        [Display(Name = "Estado")]
+        [Required(ErrorMessage = "Falta Estado")]
         public string entidad_federativa { get; set; }
+        [Display(Name = "Ciudad")]
+        [Required(ErrorMessage = "Falta Ciudad")]
         public string ciudad { get; set; }
+        [Display(Name = "Colonia")]
+        [Required(ErrorMessage = "Falta Colonia")]
         public string colonia { get; set; }
+        [Display(Name = "Dirección")]
+        [Required(ErrorMessage = "Falta Dirección")]
         public string direccion { get; set; }
+        [Display(Name = "Número de Tarjeta")]
+        [Required(ErrorMessage = "Falta Número de Tarjeta")]
         public string num_tarjeta { get; set; }
+        [Display(Name = "Mes de expiración")]
+        [Required(ErrorMessage = "Falta mes")]
         public string mes_expiracion { get; set; }
+        [Display(Name = "Año de expiración")]
+        [Required(ErrorMessage = "Falta año")]
         public string anio_expiracion { get; set; }
+        [Display(Name = "CVV")]
+        [Required(ErrorMessage = "Falta CVV")]
         public string cvv { get; set; }
+        [Display(Name = "Tipo de Tarjeta")]
+        [Required(ErrorMessage = "Falta Tipo de tarjeta")]
         public string tipo_tarjeta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

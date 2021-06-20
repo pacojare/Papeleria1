@@ -11,13 +11,22 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empleados
     {
         public int id { get; set; }
+        [Display(Name = "Nombre completo")]
+        [Required(ErrorMessage = "Falta nombre")]
         public string nombre { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Falta Email")]
         public string email { get; set; }
+        [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "Falta depto")]
         public string departamento { get; set; }
+        [Display(Name = "Constraseña")]
+        [Required(ErrorMessage = "Falta contraseña")]
         public string contrasenia { get; set; }
     }
 }

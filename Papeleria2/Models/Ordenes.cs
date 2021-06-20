@@ -11,7 +11,8 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Ordenes
     {
         public int id { get; set; }
@@ -23,6 +24,8 @@ namespace Papeleria2.Models
         public int id_cliente { get; set; }
         public string dir_entrega { get; set; }
         public Nullable<int> id_paqueteria { get; set; }
+        [Display(Name = "Número de confirmación")]
+        [Required(ErrorMessage = "Falta No. Confirmación")]
         public string status { get; set; }
     
         public virtual Clientes Clientes { get; set; }
