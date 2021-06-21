@@ -11,6 +11,7 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Categorias
     {
@@ -21,8 +22,14 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Falta nombre")]
         public string nombre { get; set; }
+        [Display(Name = "Descripción")]
+        [Required(ErrorMessage = "Falta descripción")]
         public string descripcion { get; set; }
+        [Display(Name = "Imagen")]
+        [Required(ErrorMessage = "Falta imagen")]
         public string imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

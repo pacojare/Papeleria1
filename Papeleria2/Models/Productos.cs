@@ -11,6 +11,7 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Productos
     {
@@ -21,13 +22,27 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Falta nombre")]
         public string nombre { get; set; }
+        [Display(Name = "Descripción")]
+        [Required(ErrorMessage = "Falta descipción")]
         public string descripcion { get; set; }
+        [Display(Name = "Precio")]
+        [Required(ErrorMessage = "Falta precio")]
         public decimal precio { get; set; }
         public Nullable<System.DateTime> ult_actualizacion { get; set; }
+        [Display(Name = "Imagen")]
+        [Required(ErrorMessage = "Falta imagen")]
         public string imagen { get; set; }
+        [Display(Name = "No.Existencia")]
+        [Required(ErrorMessage = "Falta no.existencia")]
         public Nullable<int> existencia { get; set; }
+        [Display(Name = "Stock")]
+        [Required(ErrorMessage = "Falta stock")]
         public Nullable<int> stock { get; set; }
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Falta categoria")]
         public Nullable<int> id_categoria { get; set; }
     
         public virtual Categorias Categorias { get; set; }
