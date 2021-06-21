@@ -11,11 +11,18 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Orden_productos
     {
+        [Display(Name = "Cantidad")]
+        [Required(ErrorMessage = "Falta cantidad")]
         public int cantidad { get; set; }
+        [Display(Name = "Producto")]
+        [Required(ErrorMessage = "Falta producto")]
         public int id_producto { get; set; }
+        [Display(Name = "Orden")]
+        [Required(ErrorMessage = "Falta orden")]
         public int id_orden { get; set; }
     
         public virtual Productos Productos { get; set; }

@@ -11,7 +11,8 @@ namespace Papeleria2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Paqueterias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +22,29 @@ namespace Papeleria2.Models
         }
     
         public int id { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Falta nombre")]
         public string nombre { get; set; }
+        [Display(Name = "RFC")]
+        [Required(ErrorMessage = "Falta RFC")]
         public string rfc { get; set; }
+        [Display(Name = "Télefono")]
+        [Required(ErrorMessage = "Falta telefono")]
         public string tel { get; set; }
+        [Display(Name = "Sitio Web")]
+        [Required(ErrorMessage = "Falta Sitio Web")]
         public string web { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Falta Email")]
         public string email { get; set; }
+        [Display(Name = "Dirección")]
+        [Required(ErrorMessage = "Falta dirección")]
         public string direccion { get; set; }
+        [Display(Name = "Nombre de Contacto")]
+        [Required(ErrorMessage = "Falta nombre de contacto")]
         public string contacto { get; set; }
+        [Display(Name = "Teléfono de Contacto")]
+        [Required(ErrorMessage = "Falta teléfono de contacto")]
         public string telContacto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
