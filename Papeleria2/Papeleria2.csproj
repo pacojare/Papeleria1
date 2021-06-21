@@ -246,7 +246,9 @@
     <Content Include="Content\img\pape.png" />
     <Content Include="Content\img\Productos\engrapadora.jpg" />
     <Content Include="Content\img\Productos\impresora.jpg" />
+    <Content Include="Content\img\Productos\libreta1.jpg" />
     <Content Include="Content\img\Productos\mochila.jpg" />
+    <Content Include="Content\img\Productos\tijeras1.jpg" />
     <Content Include="Content\img\tarj\pp.png" />
     <Content Include="Content\img\tarj\tar.png" />
     <Content Include="Content\js\jquery.js" />
